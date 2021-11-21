@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * @author Patrick Scharnow <patrick.scharnow@gmx.de>
  */
-public class Calculator  {
+public class Calculator implements ITableCalculator {
 	/**
 	 * This method gets a table list containing rows. 
 	 * It calculates the spread between the two parameters of a row and
