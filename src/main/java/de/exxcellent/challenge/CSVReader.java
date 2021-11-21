@@ -11,9 +11,16 @@ import java.util.List;
  * @author Patrick Scharnow <patrick.scharnow@gmx.de>
  */
 public class CSVReader implements IReader{
-	
-	private static String[] colIdentifier;
 
+	private static String[] colIdentifier;
+    
+	/**
+	 * This method reads the csv file row by row and
+	 * creates a table object for each row. 
+	 * The table objects are stored in an ArrayList and returned.
+	 * @param path Path to the .csv including filename
+	 * @author Patrick Scharnow <patrick.scharnow@gmx.de>
+	 */
 	public static List<Table> reader(String path) throws IOException {
 		List<Table>rows = new ArrayList<>();
 		BufferedReader br = new BufferedReader(new FileReader(path));
