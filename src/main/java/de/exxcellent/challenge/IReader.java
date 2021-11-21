@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IReader {
 
-	static List<String[]> reader() {
+	static List<Table> reader() {
 		return null;
 	}
 }
