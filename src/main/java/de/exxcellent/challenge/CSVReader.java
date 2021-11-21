@@ -10,18 +10,29 @@ import java.util.List;
  * Class for reading exel's .csv files
  * @author Patrick Scharnow <patrick.scharnow@gmx.de>
  */
-public class CSVReader  {
+public class CSVReader implements IReader{
+	
+	private static String[] colIdentifier;
 
-	public static List<String[]> reader(String path) throws IOException {
+	public static List<Table> reader(String path) throws IOException {
+		List<Table>rows = new ArrayList<>();
 		BufferedReader br = new BufferedReader(new FileReader(path));
-		List<String[]>rows = new ArrayList<String[]>();
-
+		
 		String line = br.readLine();
+		int i = 0;
 		while (line != null) {
 		    	
 		    String[] attributes = line.split(",");
-            rows.add(attributes);
-
+		    
+		    if(i == 0) {
+		    	colIdentifier = attributes;	//first row array stores the headers of the table
+		    }
+		    
+		    if(i > 0) {
+		    	Table row = new Table(colIdentifier, attributes);
+		    	rows.add(row);
+		    }
+		    i++;
 		    line = br.readLine();  
 		}
 		return rows;
